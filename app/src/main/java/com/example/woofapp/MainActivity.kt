@@ -64,7 +64,11 @@ fun DogItem(
             .fillMaxWidth()
             .padding(dimensionResource(R.dimen.padding_small))
     ) {
-        Row {
+        Row(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(dimensionResource(R.dimen.padding_small))
+        ) {
             DogIcon(dog)
             DogInformation(dog)
         }
