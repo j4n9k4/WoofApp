@@ -108,3 +108,11 @@ fun WoofAppPreview()
         WoofApp()
     }
 }
+@Preview(showSystemUi = true)
+@Composable
+fun WoofDarkThemePreview()
+{
+    WoofAppTheme (darkTheme = true){
+        WoofApp()
+    }
+}
