@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -89,16 +90,27 @@ fun DogItem(
         modifier = modifier
             .fillMaxWidth()
     ) {
-        Row(
-            modifier = modifier
-                .fillMaxWidth()
-        ) {
-            DogIcon(dog)
-            DogInformation(dog)
-            Spacer(modifier = Modifier.weight(1F))
-            DogItemButton(
-                expanded = expanded,
-                onClick = {}
+        Column {
+            Row(
+                modifier = modifier
+                    .fillMaxWidth()
+            ) {
+                DogIcon(dog)
+                DogInformation(dog)
+                Spacer(modifier = Modifier.weight(1F))
+                DogItemButton(
+                    expanded = expanded,
+                    onClick = {}
+                )
+            }
+            DogHobby(
+                dog.hobbies,
+                modifier = Modifier.padding(
+                    start = dimensionResource(R.dimen.padding_medium),
+                    top = dimensionResource(R.dimen.padding_small),
+                    end = dimensionResource(R.dimen.padding_medium),
+                    bottom = dimensionResource(R.dimen.padding_medium)
+                )
             )
         }
     }
@@ -176,6 +188,23 @@ fun WoofTopAppBar(modifier: Modifier = Modifier)
         },
         modifier = modifier,
     )
+}
+@Composable
+fun DogHobby(
+    @StringRes dogHobby: Int,
+    modifier: Modifier = Modifier
+)
+{
+    Column(modifier = modifier) {
+        Text(
+            text = stringResource(R.string.about),
+            style = MaterialTheme.typography.labelSmall
+        )
+        Text(
+            text = stringResource(dogHobby),
+            style = MaterialTheme.typography.bodyLarge
+        )
+    }
 }
 
 @Preview(showSystemUi = true)
